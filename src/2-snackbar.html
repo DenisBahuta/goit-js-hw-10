@@ -16,14 +16,16 @@
 
       <fieldset class="state-form">
         <legend class="radio-field">State</legend>
-        <label class="radio-button">
-          <input type="radio" name="state" value="fulfilled" required />
-          Fulfilled
-        </label>
-        <label class="radio-button">
-          <input type="radio" name="state" value="rejected" required />
-          Rejected
-        </label>
+        <div class="radio-container">
+          <label class="radio-button">
+            <input type="radio" name="state" value="fulfilled" required />
+            Fulfilled
+          </label>
+          <label class="radio-button">
+            <input type="radio" name="state" value="rejected" required />
+            Rejected
+          </label>
+        </div>
       </fieldset>
 
       <button class="submit-field" type="submit">Create notification</button>

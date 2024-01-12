@@ -23,6 +23,8 @@ const dateTimePicker = flatpickr('#datetime-picker', {
   },
 });
 
+document.querySelector('button[data-start]').disabled = true;
+
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
@@ -55,7 +57,7 @@ const secondsEl = document.querySelector('[data-seconds]');
 startButton.addEventListener('click', function () {
   startButton.disabled = true;
   const userSelectedDate = dateTimePicker.selectedDates[0];
-  const countdownInterval = setInterval(function () {
+  let countdownInterval = setInterval(function () {
     const currentTime = new Date().getTime();
     const diffTime = userSelectedDate.getTime() - currentTime;
 

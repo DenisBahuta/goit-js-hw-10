@@ -26,14 +26,14 @@ function handleSubmit(event) {
     .then(delay => {
       iziToast.success({
         title: 'Fulfilled',
-        message: '✅ Fulfilled promise in ${delay}ms',
+        message: `✅ Обіцянка виконана за ${delay}мс`,
         timeout: delay,
       });
     })
     .catch(delay => {
       iziToast.error({
         title: 'Rejected',
-        message: '❌ Rejected promise in ${delay}ms',
+        message: `❌ Rejected promise in ${delay}ms`,
         timeout: delay,
       });
     });

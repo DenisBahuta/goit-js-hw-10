@@ -16,15 +16,12 @@ const dateTimePicker = flatpickr('#datetime-picker', {
         title: 'Error',
         message: 'Please choose a date in the future',
       });
-      document.querySelector('button[data-start]').disabled = true;
+      startButton.disabled = true;
     } else {
-      document.querySelector('button[data-start]').disabled = false;
+      startButton.disabled = false;
     }
   },
 });
-
-document.querySelector('button[data-start]').disabled = true;
-
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
@@ -54,6 +51,8 @@ const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 
+startButton.disabled = true;
+
 startButton.addEventListener('click', function () {
   startButton.disabled = true;
   const userSelectedDate = dateTimePicker.selectedDates[0];
@@ -68,9 +67,13 @@ startButton.addEventListener('click', function () {
     }
 
     const { days, hours, minutes, seconds } = convertMs(diffTime);
-    daysEl.textContent = days.toString().padStart(2, '0');
-    hoursEl.textContent = hours.toString().padStart(2, '0');
-    minutesEl.textContent = minutes.toString().padStart(2, '0');
-    secondsEl.textContent = seconds.toString().padStart(2, '0');
+    daysEl.textContent = addLeadingZero(days);
+    hoursEl.textContent = addLeadingZero(hours);
+    minutesEl.textContent = addLeadingZero(minutes);
+    secondsEl.textContent = addLeadingZero(seconds);
   }, 1000);
 });
+
+function addLeadingZero(number) {
+  return number.toString().padStart(2, '0');
+}

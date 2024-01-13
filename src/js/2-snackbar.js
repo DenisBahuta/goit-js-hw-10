@@ -8,10 +8,10 @@ form.addEventListener('submit', handleSubmit);
 function handleSubmit(event) {
   event.preventDefault();
   const delay = event.target.elements.delay.value;
-  const state = event.target.elements.state.value;
+  const state = event.target.querySelector('input[name="state"]:checked');
 
   const promise = new Promise((resolve, reject) => {
-    if (state === 'fulfilled') {
+    if (state.value === 'fulfilled') {
       setTimeout(() => {
         resolve(delay);
       }, delay);
@@ -26,7 +26,7 @@ function handleSubmit(event) {
     .then(delay => {
       iziToast.success({
         title: 'Fulfilled',
-        message: `✅ Обіцянка виконана за ${delay}мс`,
+        message: `✅ Fulfilled promise in ${delay}ms`,
         timeout: delay,
       });
     })
